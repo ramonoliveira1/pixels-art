@@ -12,12 +12,21 @@
     </header>
     <main>
       <div id="color-palette" class="palette">
-        <div class="color"></div>
+        <div class="color selected">&checkmark;</div>
         <div class="color"></div>
         <div class="color"></div>
         <div class="color"></div>
       </div>
+
+      <div class="botoes">
+        <button class="botoes-reset" id="clear-board" onclick="cleanBoard()">Limpar</button>
+        <button class="botoes-color" id="button-random-color" onclick="changePalette()">Cores aleatórias</button>
+      </div>
     </main>
+
+      <div class="container">
+        <section id="pixel-board"></section>
+      </div>
     <script src="script.js"></script>
   </body>
 </html>
