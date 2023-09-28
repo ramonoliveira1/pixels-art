@@ -6,7 +6,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.palete {
+.palette {
   display: flex;
 }
 
@@ -14,24 +14,4 @@
   border: 1px solid black;
   padding: 40px;
   width: 80vh;
-}
-
-.black {
-  background-color: black;
-}
-
-.blue {
-  background-color: rgb(39, 201, 255);
-}
-
-.orange {
-  background-color: rgb(255, 192, 75);
-}
-
-.green {
-  background-color: rgb(33, 192, 33);
-}
-
-.red {
-  background-color: rgb(255, 78, 78);
 }
