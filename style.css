@@ -10,11 +10,17 @@
   text-align: center;
 }
 
+.container-palette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .palette {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
-  margin: 30px 37%;
+  padding: 10px 0;
+  margin: 15px 37% 0;
   width: auto;
   border: 1px solid black;
   border-radius: 40px;
@@ -23,10 +29,10 @@
 
 .color {
   border: 1px solid black;
-  padding: 30px;
-  width: 12px;
-  height: 10px;
-  margin: 0 15px;
+  padding: 20px;
+  width: 2px;
+  height: 1px;
+  margin: 0 10px;
   border-radius: 40px;
   display: flex;
   justify-content: center;
@@ -34,6 +40,34 @@
   color: white;
   font-size: 40px;
   cursor: pointer;
+}
+
+.container-board-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botao-vqv {
+  width: 50px;
+  margin-top: 8px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: lightblue;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-vqv:hover {
+  background-color: rgb(30, 176, 224);
+  transform: scale(1.05);
+}
+
+#board-size {
+  width: 170px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .container {
@@ -44,8 +78,8 @@
 
 #pixel-board {
   display: grid;
-  grid-template-columns: repeat(5, 40px);
   cursor: pointer;
+  margin-bottom: 50px;
 }
 
 .pixel {
@@ -60,11 +94,11 @@
   justify-content: center;
   align-items: center;
   padding: 30px 0;
-  margin: 30px 0;
+  margin: 10px 0;
 }
 
 .botoes-reset, .botoes-color {
-  margin: 0 15px;
+  margin: 0 10px;
   padding: 10px;
   border-radius: 15px;
   background-color: lightblue;

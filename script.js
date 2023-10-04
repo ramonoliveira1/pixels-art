@@ -2,7 +2,10 @@
 const colorPallete = document.getElementById('color-palette');
 const colors = colorPallete.children;
 const pixelBoard = document.getElementById('pixel-board');
-const numberOfPixels = 25;
+let pixelsBoard = parseInt(document.getElementById('board-size').value, 10);
+let numberOfPixels = pixelsBoard * pixelsBoard;
+const vqvButton = document.getElementById('generate-board');
+pixelBoard.style.gridTemplateColumns = 'repeat(5, 40px)';
 
 const selectColor = (element) => {
   for (let i = 0; i < colors.length; i += 1) {
@@ -18,30 +21,63 @@ const selectColor = (element) => {
 };
 
 for (let i = 0; i < colors.length; i += 1) {
-  const colorSelected = () => { selectColor(colors[i]); };
+  const colorSelected = () => {
+    selectColor(colors[i]);
+  };
   colors[i].addEventListener('click', colorSelected);
-  const numbers = [Math.floor(Math.random() * 255) + 1, Math.floor(Math.random() * 255) + 1, Math.floor(Math.random() * 255) + 1];
-  colors[i].style.backgroundColor = `rgb(${numbers[0]}, ${numbers[1]}, ${numbers[2]})`;
+  const numbers = [
+    Math.floor(Math.random() * 255) + 1,
+    Math.floor(Math.random() * 255) + 1,
+    Math.floor(Math.random() * 255) + 1,
+  ];
+  colors[
+    i
+  ].style.backgroundColor = `rgb(${numbers[0]}, ${numbers[1]}, ${numbers[2]})`;
 }
 
 const changeColor = (target) => {
   const newTarget = target;
-  newTarget.style.backgroundColor = document.querySelector('.selected').style.backgroundColor;
+  newTarget.style.backgroundColor =
+    document.querySelector('.selected').style.backgroundColor;
 };
+
+const boardSize = () => {
+  const pixelsExisting = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixelsExisting.length; i += 1) {
+    pixelBoard.removeChild(pixelsExisting[i]);
+  }
+  pixelsBoard = parseInt(document.getElementById('board-size').value, 10);
+  numberOfPixels = pixelsBoard * pixelsBoard;
+  for (let i = 0; i < numberOfPixels; i += 1) {
+    const pixel = document.createElement('div');
+    pixel.className = 'pixel';
+    pixel.style.backgroundColor = 'white';
+    const colorChange = () => changeColor(pixel);
+    pixel.addEventListener('click', colorChange);
+    pixelBoard.appendChild(pixel);
+  }
+  pixelBoard.style.gridTemplateColumns = `repeat(${pixelsBoard}, 40px)`;
+};
+
+vqvButton.addEventListener('click', boardSize);
 
 for (let i = 0; i < numberOfPixels; i += 1) {
   const pixel = document.createElement('div');
   pixel.className = 'pixel';
   pixel.style.backgroundColor = 'white';
-  const colorChange = () => (changeColor(pixel));
+  const colorChange = () => changeColor(pixel);
   pixel.addEventListener('click', colorChange);
   pixelBoard.appendChild(pixel);
 }
 
 const changePalette = () => {
   for (let i = 0; i < colors.length; i += 1) {
-    colors[i].style.backgroundColor = `rgb(${Math.floor(Math.random() * 255) + 1}, ${Math.floor(Math.random() * 255) + 1}, ${Math.floor(Math.random() * 255) + 1})`;
-}
+    colors[i].style.backgroundColor = `rgb(${
+      Math.floor(Math.random() * 255) + 1
+    }, ${Math.floor(Math.random() * 255) + 1}, ${
+      Math.floor(Math.random() * 255) + 1
+    })`;
+  }
 };
 
 const pixelItems = document.getElementsByClassName('pixel');
@@ -53,7 +89,7 @@ const updateColor = (index, arr) => {
 };
 
 for (let i = 0; i < pixelItems.length; i += 1) {
-  const updtColor = () => (updateColor(i, pixelItems));
+  const updtColor = () => updateColor(i, pixelItems);
   pixelItems[i].addEventListener('click', updtColor);
 }
 
@@ -72,7 +108,7 @@ const cleanBoard = () => {
     colorsStoraged[i] = 'white';
   }
   localStorage.setItem('pixelBoard', JSON.stringify(colorsStoraged));
-  let pixels = document.getElementsByClassName('pixel');
+  const pixels = document.getElementsByClassName('pixel');
   for (let i = 0; i < pixels.length; i += 1) {
     pixels[i].style.backgroundColor = '#FFF';
   }

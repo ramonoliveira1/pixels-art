@@ -11,22 +11,41 @@
       <h1 id="title">Paleta de Cores</h1>
     </header>
     <main>
-      <div id="color-palette" class="palette">
-        <div class="color selected">&checkmark;</div>
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
-      </div>
+      <section class="container-palette">
+        <div id="color-palette" class="palette">
+          <div class="color selected">&checkmark;</div>
+          <div class="color"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+          <div class="color"></div>
+        </div>
+      </section>
 
       <div class="botoes">
-        <button class="botoes-reset" id="clear-board" onclick="cleanBoard()">Limpar</button>
-        <button class="botoes-color" id="button-random-color" onclick="changePalette()">Cores aleatórias</button>
+        <section class="container-board-size">
+          <label for="board-size">Tamanho do quadro:</label>
+          <input type="number" id="board-size" min="1" value="5" />
+          <button class="botao-vqv" id="generate-board">VQV</button>
+        </section>
+        <button class="botoes-reset" id="clear-board" onclick="cleanBoard()">
+          Limpar
+        </button>
+        <button
+          class="botoes-color"
+          id="button-random-color"
+          onclick="changePalette()"
+        >
+          Cores aleatórias
+        </button>
       </div>
     </main>
 
-      <div class="container">
-        <section id="pixel-board"></section>
-      </div>
+    <div class="container">
+      <section id="pixel-board"></section>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
